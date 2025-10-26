@@ -87,10 +87,18 @@ glm::mat4 calculateModelMatrix(int index) {
     }
 
     if (index == 3) { // кисть
-        std::cout << 123;
         model *= rotAroundPoint(glm::radians(Cylinder_gradus), glm::vec3(), glm::vec3(0.0f, 1.0f, 0.0f));
         model *= rotAroundPoint(glm::radians(plecho_gradus), plecho_center, glm::vec3(1.0f, 0.0f, 0.0f));
         model *= rotAroundPoint(glm::radians(kyst_gradus), kyst_center, glm::vec3(1.0f, 0.0f, 0.0f));
+        return model;
+    }
+    if (index == 4) { // штука на основании
+        model *= rotAroundPoint(glm::radians(Cylinder_gradus), glm::vec3(), glm::vec3(0.0f, 1.0f, 0.0f));
+        return model;
+    }
+    if (index == 5) { // плечо
+        model *= rotAroundPoint(glm::radians(Cylinder_gradus), glm::vec3(), glm::vec3(0.0f, 1.0f, 0.0f));
+        model *= rotAroundPoint(glm::radians(plecho_gradus), plecho_center, glm::vec3(1.0f, 0.0f, 0.0f));
         return model;
     }
     //switch (index)
@@ -245,17 +253,17 @@ void processInput(GLFWwindow* window) {
     }
 
 
-    float Cylinder_gradus_ogr = 300.0f;
+    float Cylinder_gradus_ogr = 150.0f;
     if (Cylinder_gradus > Cylinder_gradus_ogr) Cylinder_gradus = Cylinder_gradus_ogr;
     if (Cylinder_gradus < -Cylinder_gradus_ogr) Cylinder_gradus = -Cylinder_gradus_ogr;
 
-    float plecho_gradus_ogr_up = 120.0f;
-    float plecho_gradus_ogr_down = -50.0f;
+    float plecho_gradus_ogr_up = 60.0f;
+    float plecho_gradus_ogr_down = -25.0f;
     if (plecho_gradus > plecho_gradus_ogr_up) plecho_gradus = plecho_gradus_ogr_up;
     if (plecho_gradus < plecho_gradus_ogr_down) plecho_gradus = plecho_gradus_ogr_down;
 
-    float kyst_gradus_ogr_up = 150.0f;
-    float kyst_gradus_ogr_down = -65.0f;
+    float kyst_gradus_ogr_up = 75.0f;
+    float kyst_gradus_ogr_down = -30.0f;
     if (kyst_gradus > kyst_gradus_ogr_up) kyst_gradus = kyst_gradus_ogr_up;
     if (kyst_gradus < kyst_gradus_ogr_down) kyst_gradus = kyst_gradus_ogr_down;
 }
